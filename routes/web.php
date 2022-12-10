@@ -32,6 +32,12 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('permissions', App\Http\Controllers\PermissionController::class);
     Route::get('dataPermission', [App\Http\Controllers\PermissionController::class, 'data'])->name('permissions.data');
+
+    Route::resource('kategori', App\Http\Controllers\KategoriController::class);
+    Route::get('datakategori', [App\Http\Controllers\KategoriController::class, 'data'])->name('kategori.data');
+
+    Route::resource('pesan', App\Http\Controllers\PesanController::class);
+    Route::get('datapesan', [App\Http\Controllers\PesanController::class, 'data'])->name('pesan.data');
 });
 
 // Auth::routes();
