@@ -38,6 +38,9 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('pesan', App\Http\Controllers\PesanController::class);
     Route::get('datapesan', [App\Http\Controllers\PesanController::class, 'data'])->name('pesan.data');
+
+    Route::resource('guru', App\Http\Controllers\GuruController::class);
+    Route::get('dataguru', [App\Http\Controllers\GuruController::class, 'data'])->name('guru.data');
 });
 
 // Auth::routes();

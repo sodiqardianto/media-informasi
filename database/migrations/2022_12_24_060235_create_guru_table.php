@@ -19,6 +19,7 @@ class CreateGuruTable extends Migration
             $table->integer('nipn');
             $table->enum('pendidikanterakhir',['S3','S2','S1','SMA','SMK','SMP','SD']);
             $table->string('keahlianbahasa',255);
+            $table->string('picture')->nullable();
             $table->timestamps();
         });
     }

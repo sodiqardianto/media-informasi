@@ -70,6 +70,9 @@
                             <a href="{{ route('kategori.index') }}" class="slide-item @if (Request::segment(1) == 'berita') active @endif"> Berita</a>
                         </li>
                         <li>
+                            <a href="{{ route('guru.index') }}" class="slide-item @if (Request::segment(1) == 'guru') active @endif"> Guru</a>
+                        </li>
+                        <li>
                             <a href="{{ route('pesan.index') }}" class="slide-item @if (Request::segment(1) == 'pesan') active @endif"> Pesan</a>
                         </li>
                     </ul>
