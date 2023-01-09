@@ -100,20 +100,17 @@ class KategoriController extends Controller
      */
     public function update(Request $request, Kategori $kategori)
     {
-        // Mencari record kategori berdasarkan ID yang diberikan
-        $data = Kategori::findOrFail($id);
-
         // Validasi data yang dikirim
         $this->validate($request, [
             'namakategori' => 'required',
         ]);
 
         // Mengupdate data kategori
-        $data->update([
+        $kategori->update([
             'namakategori' => $request->namakategori,
         ]);
 
-        if ($data) {
+        if ($kategori) {
             return redirect()->route('kategori.index')->with('success', 'Data Kategori Berhasil Diubah');
         } else {
             return redirect()->route('kategori.create')->with('error', 'Data Kategori Gagal diubah');
@@ -130,7 +127,7 @@ class KategoriController extends Controller
     {
         //$muriddata = User::findOrFail($murid->id);
         $kategori->delete();
-        
+
         return response()->json(['success' => 'Data Kategori Berhasil Dihapus']);
     }
 }

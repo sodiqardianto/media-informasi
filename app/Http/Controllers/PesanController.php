@@ -52,7 +52,21 @@ class PesanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nama_lengkap' => 'required',
+            'no_telp' => 'required',
+            'email' => 'required',
+            'komentar' => 'required',
+        ]);
+
+        Pesan::create([
+            'nama' => $request->nama_lengkap,
+            'notelp' => $request->no_telp,
+            'email' => $request->email,
+            'isipesan' => $request->komentar,
+        ]);
+
+        return redirect()->back()->with('success', 'Pesan berhasil dikirim.');
     }
 
     /**

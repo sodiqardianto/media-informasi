@@ -36,12 +36,24 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('kategori', App\Http\Controllers\KategoriController::class);
     Route::get('datakategori', [App\Http\Controllers\KategoriController::class, 'data'])->name('kategori.data');
 
-    Route::resource('pesan', App\Http\Controllers\PesanController::class);
+    Route::get('pesan', [App\Http\Controllers\PesanController::class, 'index'])->name('pesan.index');
+    Route::get('pesan/{id}', [App\Http\Controllers\PesanController::class, 'show'])->name('pesan.show');
+    Route::delete('pesan/{id}', [App\Http\Controllers\PesanController::class, 'destroy'])->name('pesan.destroy');
+    Route::get('pesan/{id}/edit', [App\Http\Controllers\PesanController::class, 'edit'])->name('pesan.edit');
+    Route::put('pesan/{id}', [App\Http\Controllers\PesanController::class, 'update'])->name('pesan.update');
+
     Route::get('datapesan', [App\Http\Controllers\PesanController::class, 'data'])->name('pesan.data');
 
     Route::resource('guru', App\Http\Controllers\GuruController::class);
     Route::get('dataguru', [App\Http\Controllers\GuruController::class, 'data'])->name('guru.data');
+
+    Route::resource('berita', App\Http\Controllers\BeritaController::class);
+    Route::get('databerita', [App\Http\Controllers\BeritaController::class, 'data'])->name('berita.data');
 });
 
 // Auth::routes();
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('our-teacher', [App\Http\Controllers\HomeController::class, 'show'])->name('our-teacher');
+Route::get('our-post', [App\Http\Controllers\HomeController::class, 'showBerita'])->name('our-post');
+Route::get('detail-post/{id}', [App\Http\Controllers\HomeController::class, 'detailBerita'])->name('detail-post');
+Route::post('pesan', [App\Http\Controllers\PesanController::class, 'store'])->name('pesan.store');

@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'Kategori')
+@section('title', 'Berita')
 @section('content')
 <!--app-content open-->
 <div class="main-content app-content mt-0">
@@ -25,7 +25,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">
-                                <a href="{{ route('kategori.create') }}" class="btn btn-primary"><i class="fe fe-plus me-2"></i> Tambah @yield('title')</a>
+                                <a href="{{ route('berita.create') }}" class="btn btn-primary"><i class="fe fe-plus me-2"></i> Tambah @yield('title')</a>
                             </h3>
                         </div>
                         <div class="card-body">
@@ -34,10 +34,9 @@
                                     <thead>
                                         <tr>
                                             <th class="border-bottom-0">No</th>
-                                            <th class="border-bottom-0">Nama Kategori</th>
-                                            {{-- <th class="border-bottom-0">Username</th>
-                                            <th class="border-bottom-0">Emaiil</th>
-                                            <th class="border-bottom-0">Status</th> --}}
+                                            <th class="border-bottom-0">Kategori</th>
+                                            <th class="border-bottom-0">Pembuat</th>
+                                            <th class="border-bottom-0">Judul Berita</th>
                                             <th class="border-bottom-0">Aksi</th>
                                         </tr>
                                     </thead>
@@ -65,7 +64,7 @@
             searchPlaceholder: "Cari ..."
         },
         ajax: {
-            url: "{{ route('kategori.data') }}",
+            url: "{{ route('berita.data') }}",
             type: "GET",
         },
         columns: [{
@@ -74,29 +73,22 @@
                 orderable: false,
                 searchable: false
             },
+
             {
-                data: 'namakategori',
-                name: 'namakategori'
+                data: 'kategori.namakategori',
+                name: 'kategori.namakategori'
             },
-            // {
-            //     data: 'username',
-            //     name: 'username'
-            // },
-            // {
-            //     data: 'email',
-            //     name: 'email'
-            // },
-            // {
-            //     data: 'status',
-            //     name: 'status',
-            //     render: function(data, type, row) {
-            //         if (data == 1) {
-            //             return '<span class="badge rounded-pill bg-success badge-sm me-1">Aktif</span>';
-            //         } else {
-            //             return '<span class="badge rounded-pill bg-danger badge-sm me-1">Tidak Aktif</span>';
-            //         }
-            //     }
-            // },
+            
+            {
+                data: 'user.name',
+                name: 'user.name'
+            },
+
+            {
+                data: 'judul_berita',
+                name: 'judul_berita'
+            },
+
             {
                 data: 'action',
                 name: 'action',

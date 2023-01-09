@@ -14,4 +14,13 @@ class Guru extends Model
     protected $fillable = [
         'namaguru', 'nipn', 'pendidikanterakhir', 'keahlianbahasa', 'picture'
     ];
+
+    public function scopeFilter($query, array $filters)
+    {
+        return $query->when(
+            $filters['search'] ?? false,
+            fn ($query, $search)
+            => $query->where('namaguru', 'like', '%' . $search . '%')
+        );
+    }
 }

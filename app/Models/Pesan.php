@@ -10,4 +10,11 @@ class Pesan extends Model
     use HasFactory;
     // Menentukan nama table yang digunakan
     protected $table = 'pesan';
+
+    protected $fillable = [
+        'nama',
+        'notelp',
+        'email',
+        'isipesan',
+    ];
 }

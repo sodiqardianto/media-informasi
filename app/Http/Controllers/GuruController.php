@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Guru;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 
 class GuruController extends Controller
@@ -18,15 +19,6 @@ class GuruController extends Controller
         $guru = Guru::all();
         return DataTables::of($guru)
             ->addIndexColumn()
-            // ->addColumn('foto', function ($guru) {
-            //     if ($guru->picture == "") {
-            //         $foto = '<img src="images/guru/default.jpg">';
-            //     } else {
-            //         $foto = "<img src=\"" + $guru->picture + "\" height=\"50\"/>";
-            //         // $foto = '<img src="/images/guru/'.$guru->picture.'" alt="ganbar">';
-            //     }
-            //     return $foto;
-            // })
             ->addColumn('action', function ($guru) {
                 if ($guru->id == 1) {
                     $delete = '<button data-id="' . $guru->id . '" class="btn btn-danger btn-sm delete"><i class="fa fa-trash"></i> Delete</button>';
@@ -67,16 +59,16 @@ class GuruController extends Controller
             'pendidikanterakhir' => 'required',
             'keahlianbahasa' => 'required',
             'picture' => 'required|image|mimes:jpeg,png,jpg|max:2048'
-        ],[
-            'namaguru.required'=>'Nama Guru Wajib Diisi',
-            'nipn.required'=> 'NIPN Wajib Diisi',
-            'nipn.unique'=> 'NIPN Sudah Terpakai',
-            'keahlianbahasa.required'=>'Keahlian Bahasa Wajib Diisi',
-            'picture.required'=> 'Foto Wajib Diisi',
-            'picture.image'=> 'Foto Yang Diupload Bukan Gambar',
-            'picture.max'=> 'Ukuran File Maksimal 2 mb',
-    ]);
-    
+        ], [
+            'namaguru.required' => 'Nama Guru Wajib Diisi',
+            'nipn.required' => 'NIPN Wajib Diisi',
+            'nipn.unique' => 'NIPN Sudah Terpakai',
+            'keahlianbahasa.required' => 'Keahlian Bahasa Wajib Diisi',
+            'picture.required' => 'Foto Wajib Diisi',
+            'picture.image' => 'Foto Yang Diupload Bukan Gambar',
+            'picture.max' => 'Ukuran File Maksimal 2 mb',
+        ]);
+
         // menyimpan data guru baru
         $guru = new Guru([
             'namaguru' => $request->input('namaguru'),
@@ -85,10 +77,10 @@ class GuruController extends Controller
             'keahlianbahasa' => $request->input('keahlianbahasa')
         ]);
         $guru->save();
-    
+
         // menyimpan gambar guru
         $picture = $request->file('picture');
-        $filename = time().'.'.$picture->getClientOriginalExtension();
+        $filename = time() . '.' . $picture->getClientOriginalExtension();
         $picture->move(public_path('images/guru'), $filename);
         $guru->picture = $filename;
         $guru->save();
@@ -119,7 +111,7 @@ class GuruController extends Controller
      */
     public function edit(Guru $guru)
     {
-        return view('guru.edit',compact('guru'));
+        return view('guru.edit', compact('guru'));
     }
 
     /**
@@ -133,36 +125,36 @@ class GuruController extends Controller
     {
         // Mengambil data guru yang akan diupdate
         $data = Guru::findOrFail($guru->id);
-        if($request->picture==""){
+        if ($request->picture == "") {
             // Validasi input
             $request->validate([
                 'namaguru' => 'required',
                 'nipn' => 'required',
                 'pendidikanterakhir' => 'required',
                 'keahlianbahasa' => 'required',
-                
-            ],[
-                'namaguru.required'=>'Nama Guru Wajib Diisi',
-                'nipn.required'=> 'NIPN Wajib Diisi',
-                'keahlianbahasa.required'=>'Keahlian Bahasa Wajib Diisi',
+
+            ], [
+                'namaguru.required' => 'Nama Guru Wajib Diisi',
+                'nipn.required' => 'NIPN Wajib Diisi',
+                'keahlianbahasa.required' => 'Keahlian Bahasa Wajib Diisi',
             ]);
-        }else{
+        } else {
             $request->validate([
                 'namaguru' => 'required',
                 'nipn' => 'required',
                 'pendidikanterakhir' => 'required',
                 'keahlianbahasa' => 'required',
                 'picture' => 'required|image|max:2024', // opsional, harus berupa gambar, maksimal 1 MB
-            ],[
-                'namaguru.required'=>'Nama Guru Wajib Diisi',
-                'nipn.required'=> 'NIPN Wajib Diisi',
-                'keahlianbahasa.required'=>'Keahlian Bahasa Wajib Diisi',
-                'picture.required'=> 'Foto Wajib Diisi',
-                'picture.image'=> 'Foto Yang Diupload Bukan Gambar',
-                'picture.max'=> 'Ukuran File Maksimal 2 mb',
+            ], [
+                'namaguru.required' => 'Nama Guru Wajib Diisi',
+                'nipn.required' => 'NIPN Wajib Diisi',
+                'keahlianbahasa.required' => 'Keahlian Bahasa Wajib Diisi',
+                'picture.required' => 'Foto Wajib Diisi',
+                'picture.image' => 'Foto Yang Diupload Bukan Gambar',
+                'picture.max' => 'Ukuran File Maksimal 2 mb',
             ]);
         }
-        
+
 
         // Mengupdate data guru
         $data->namaguru = $request->namaguru;
@@ -172,12 +164,12 @@ class GuruController extends Controller
 
         // Jika file picture diupload, simpan dan set path ke field picture
         if ($request->hasFile('picture')) {
-             // Hapus foto lama
+            // Hapus foto lama
             Storage::delete($data->foto);
 
             // Simpan foto baru
             $picture = $request->file('picture');
-            $filename = time().'.'.$picture->getClientOriginalExtension();
+            $filename = time() . '.' . $picture->getClientOriginalExtension();
             $picture->move(public_path('images/guru'), $filename);
             $data->picture = $filename;
         }

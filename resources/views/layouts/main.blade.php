@@ -10,8 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Sash – Bootstrap 5  Admin & Dashboard Template">
     <meta name="author" content="Spruko Technologies Private Limited">
-    <meta name="keywords"
-        content="admin,admin dashboard,admin panel,admin template,bootstrap,clean,dashboard,flat,jquery,modern,responsive,premium admin templates,responsive admin,ui,ui kit.">
+    <meta name="keywords" content="admin,admin dashboard,admin panel,admin template,bootstrap,clean,dashboard,flat,jquery,modern,responsive,premium admin templates,responsive admin,ui,ui kit.">
 
     <!-- FAVICON -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/brand/favicon.ico') }}" />
@@ -28,11 +27,18 @@
     <link href="{{ asset('assets/css/transparent-style.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/skin-modes.css') }}" rel="stylesheet" />
 
+    <!-- Plugins CSS -->
+    <link href="{{ asset('assets_plugins/css/plugins.css') }}" rel="stylesheet">
+
     <!--- FONT-ICONS CSS -->
     <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet" />
 
     <!-- COLOR SKIN CSS -->
     <link id="theme" rel="stylesheet" type="text/css" media="all" href="{{ asset('assets/colors/color1.css') }}" />
+    
+    <!-- INTERNAL Switcher css -->
+    <link href="{{ asset('assets/switcher/css/switcher.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/switcher/demo.css') }}" rel="stylesheet">
 
 </head>
 
@@ -79,6 +85,17 @@
     <script src="{{ asset('assets/plugins/bootstrap/js/popper.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
 
+    <!-- INTERNAL WYSIWYG Editor JS -->
+    <script src="{{ asset('assets/plugins/wysiwyag/jquery.richtext.js') }}"></script>
+    <script src="{{ asset('assets/plugins/wysiwyag/wysiwyag.js') }}"></script>
+
+    <!-- INTERNAL File-Uploads Js-->
+    <script src="{{ asset('assets/plugins/fancyuploder/jquery.ui.widget.js') }}"></script>
+    <script src="{{ asset('assets/plugins/fancyuploder/jquery.fileupload.js') }}"></script>
+    <script src="{{ asset('assets/plugins/fancyuploder/jquery.iframe-transport.js') }}"></script>
+    <script src="{{ asset('assets/plugins/fancyuploder/jquery.fancy-fileupload.js') }}"></script>
+    <script src="{{ asset('assets/plugins/fancyuploder/fancy-uploader.js') }}"></script>
+    
     <!-- SPARKLINE JS-->
     <script src="{{ asset('assets/js/jquery.sparkline.min.js') }}"></script>
 
