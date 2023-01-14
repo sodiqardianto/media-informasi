@@ -16,7 +16,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets_front/images/brand/favicon.ico') }}">
 
     <!-- TITLE -->
-    <title>@yield('title') – Bootstrap 5 Admin & Dashboard Template</title>
+    <title>Berita – Bootstrap 5 Admin & Dashboard Template</title>
 
     <!-- BOOTSTRAP CSS -->
     <link id="style" href="{{ asset('assets_front/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
