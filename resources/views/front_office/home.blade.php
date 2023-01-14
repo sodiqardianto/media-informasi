@@ -13,9 +13,9 @@
                 <div class="section bg-landing" id="Blog">
                     <div class="container">
                         <div class="row">
-                            <h4 class="text-center fw-semibold">Blog Posts </h4>
+                            <h4 class="text-center fw-semibold">Berita</h4>
                             <span class="landing-title"></span>
-                            <h2 class="text-center fw-semibold mb-7">Latest from Blog.</h2>
+                            <h2 class="text-center fw-semibold mb-7">Berita Terbaru.</h2>
                             @if ($recentPosts->isNotEmpty())
                                 @foreach ($recentPosts as $item)
                                     <div class="col-lg-6">
@@ -24,11 +24,11 @@
                                                 <div class="d-flex overflow-visible">
                                                     <a href="{{ route('detail-post', $item->id) }}"
                                                         class="card-aside-column br-5 cover-image"
-                                                        data-bs-image-src="{{ asset('assets_front/images/media/12.jpg') }}"
-                                                        style="background: url(&quot;{{asset('assets_front/images/media/12.jpg') }}&quot;) center center;"></a>
+                                                        data-bs-image-src="{{ asset('assets/images/berita/' . $item->gambar) }}"
+                                                        style="background: url(&quot;{{asset('assets/images/berita/' . $item->gambar) }}&quot;) center center;"></a>
                                                     <div class="ps-3 flex-column">
                                                         <span class="badge bg-primary me-1 mb-1 mt-1">{{ $item->kategori->namakategori }}</span>
-                                                        <h3><a href="{{ route('detail-post', $item->id) }}">{{ $item->judul_berita }}</a></h3>
+                                                        <h3><a href="{{ route('detail-post', $item->id) }}">{{ $item->judul}}</a></h3>
                                                         <div class="">{{ substr(strip_tags($item->berita), 0, 200) }} @if (strlen(strip_tags($item->berita)) > 50) <a href="{{ route('detail-post', $item->id) }}" class="btn btn-default btn-sm">Read More</a> @endif</div>
                                                     </div>
                                                 </div>
@@ -36,10 +36,14 @@
                                         </div>
                                     </div>
                                 @endforeach
+                            @else
+                            <div class="col-12">
+                                <h3 class="text-center">Belum ada Berita</h3>
+                            </div>
                             @endif
                             <div class="text-center">
                                 <a href="{{ route('our-post') }}" target="_blank" class="btn btn-outline-primary pt-2 pb-2">
-                                    <i class="fe fe-arrow-right me-2 d-inline-flex"></i>Discover More
+                                    <i class="fe fe-arrow-right me-2 d-inline-flex"></i> Lihat lebih banyak
                                 </a>
                             </div>
                         </div>
@@ -51,7 +55,7 @@
                 <div class="section bg-landing pb-0 bg-image-style" id="About">
                     <div class="container">
                         <div class="row">
-                            <h4 class="text-center fw-semibold">Our Teacher</h4>
+                            <h4 class="text-center fw-semibold">Guru Kami</h4>
                             <span class="landing-title"></span>
                             <div class="col-lg-12">
                                 <div class="card bg-transparent">
@@ -111,6 +115,10 @@
                                                                     </div>
                                                                 </div>
                                                                 @endforeach
+                                                            @else
+                                                                <div class="col-12">
+                                                                    <h3 class="text-center">Belum ada guru</h3>
+                                                                </div>
                                                             @endif
                                                         </div>
                                                     </div>
@@ -121,7 +129,7 @@
                                 </div>
                             </div>
                             <div class="text-center">
-                                <a href="{{ route('our-teacher') }}" class="btn btn-primary mb-5"><i class="fe fe-arrow-right mx-2"></i>Check Our Teacher ...</a>
+                                <a href="{{ route('our-teacher') }}" class="btn btn-primary mb-5"><i class="fe fe-arrow-right mx-2"></i>Lihat Guru Kami ...</a>
                             </div>
                         </div>
                     </div>

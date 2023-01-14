@@ -125,6 +125,27 @@
     <!-- Color Theme js -->
     <script src="{{ asset('assets/js/themeColors.js') }}"></script>
 
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- INTERNAL Notifications js -->
+    <script src="{{ asset('assets/plugins/notify/js/rainbow.js') }}"></script>
+    {{-- <script src="{{ asset('assets/plugins/notify/js/sample.js') }}"></script> --}}
+    <script src="{{ asset('assets/plugins/notify/js/jquery.growl.js') }}"></script>
+    <script src="{{ asset('assets/plugins/notify/js/notifIt.js') }}"></script>
+
+    <script>
+        @if(session()->has('success'))
+            notif({
+                msg: "{{ session('success') }}",
+                type: "success",
+            })
+        @elseif(session()->has('error'))
+            notif({
+                msg: "{{ session('error') }}",
+                type: "error",
+            })
+        @endif
+        </script>
+        
     <!-- CUSTOM JS -->
     <script src="{{ asset('assets/js/custom.js') }}"></script>
 

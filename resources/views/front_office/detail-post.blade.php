@@ -76,13 +76,13 @@
                 <div class="row">
                     <div class="col-xl-8">
                         <div class="card">
-                            <img class="card-img-top " src="{{ asset('/images/berita/' . $berita->gambar .'') }}" alt="{{ $berita->gambar }}">
+                            <img class="card-img-top " src="{{ asset('assets/images/berita/' . $berita->gambar .'') }}" alt="{{ $berita->gambar }}">
                             <div class="card-body">
                                 <div class="d-md-flex">
-                                    <a href="javascript:void(0);" class="d-flex me-4 mb-2"><i class="fe fe-calendar fs-16 me-1 p-3 bg-secondary-transparent text-secondary bradius"></i>
+                                    <a class="d-flex me-4 mb-2"><i class="fe fe-calendar fs-16 me-1 p-3 bg-secondary-transparent text-secondary bradius"></i>
                                         <div class="mt-0 mt-3 ms-1 text-muted font-weight-semibold">{{ date('d F Y', strtotime($berita->created_at)); }}</div>
                                     </a>
-                                    <a href="profile.html" class="d-flex mb-2"><i class="fe fe-user fs-16 me-1 p-3 bg-primary-transparent text-primary bradius"></i>
+                                    <a class="d-flex mb-2"><i class="fe fe-user fs-16 me-1 p-3 bg-primary-transparent text-primary bradius"></i>
                                         <div class="mt-0 mt-3 ms-1 text-muted font-weight-semibold">{{ $berita->user->name }}</div>
                                     </a>
                                     {{-- <div class="ms-auto">
@@ -93,7 +93,7 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <h3>{{ $berita->judul_berita }}</h3>
+                                <h3>{{ $berita->judul }}</h3>
                                 <p class="card-text">{!! $berita->berita !!}</p>
                             </div>
                         </div>
@@ -149,10 +149,10 @@
                                 <div class="">
                                     @foreach ($recentPosts as $item)                                        
                                     <div class="d-flex overflow-visible mt-5">
-                                        <a href="blog-details.html" class="card-aside-column br-5 cover-image" data-bs-image-src="../assets/images/media/19.jpg" style="background: url(&quot;../assets/images/media/19.jpg&quot;) center center;"></a>
+                                        <a href="{{ route('detail-post', $item->id) }}" class="card-aside-column br-5 cover-image" data-bs-image-src="{{ asset('assets/images/berita/' . $item->gambar) }}" style="background: url(&quot;{{ asset('assets/images/berita/' . $item->gambar) }}&quot;) center center;"></a>
                                         <div class="ps-3 flex-column">
-                                            <h4><a href="blog-details.html">{{ $item->judul_berita }}</a></h4>
-                                            <div class="text-muted">{{ substr(strip_tags($item->berita), 0, 200) }} @if (strlen(strip_tags($item->berita)) > 50) <a href="{{ route('detail-post', $item->id) }}" class="btn btn-default btn-sm">Read More</a> @endif</div>
+                                            <h4><a href="{{ route('detail-post', $item->id) }}"> {{ $item->judul }} </a></h4>
+                                            <div class="text-muted">{{ substr(strip_tags($item->berita), 0, 50) }} @if (strlen(strip_tags($item->berita)) > 50) <a href="{{ route('detail-post', $item->id) }}" class="btn btn-default btn-sm">Read More</a> @endif</div>
                                         </div>
                                     </div>
                                     @endforeach

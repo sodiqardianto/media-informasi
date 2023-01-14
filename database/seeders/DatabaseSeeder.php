@@ -2,6 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Guru;
+use App\Models\Kategori;
+use App\Models\Pesan;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,6 +20,10 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RolePermissionSeeder::class,
             UserSeeder::class,
+            KategoriSeeder::class,
+            BeritaSeeder::class,
+            GuruSeeder::class,
+            PesanSeeder::class,
         ]);
     }
 }

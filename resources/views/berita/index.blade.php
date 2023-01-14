@@ -85,8 +85,8 @@
             },
 
             {
-                data: 'judul_berita',
-                name: 'judul_berita'
+                data: 'judul',
+                name: 'judul'
             },
 
             {

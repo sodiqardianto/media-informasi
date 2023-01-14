@@ -42,10 +42,10 @@
                         <li>
                             <a href="{{ route('users.index') }}" class="slide-item @if (Request::segment(1) == 'users') active @endif"> User</a>
                         </li>
-                        <li>
+                        <li hidden>
                             <a href="{{ route('roles.index') }}" class="slide-item @if (Request::segment(1) == 'roles') active @endif"> Role</a>
                         </li>
-                        <li>
+                        <li hidden>
                             <a href="{{ route('permissions.index') }}" class="slide-item @if (Request::segment(1) == 'permissions') active @endif"> Permission</a>
                         </li>
                     </ul>
@@ -53,8 +53,8 @@
                 <li class="sub-category">
                     <h3>UI Kit</h3>
                 </li>
-                <li class="slide">
-                    <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)">
+                <li class="slide @if (Request::segment(1) == 'kategori' || Request::segment(1) == 'berita' || Request::segment(1) == 'guru' || Request::segment(1) == 'pesan') is-expanded @endif">
+                    <a class="side-menu__item @if (Request::segment(1) == 'kategori' || Request::segment(1) == 'berita' || Request::segment(1) == 'guru' || Request::segment(1) == 'pesan') active is-expanded @endif" data-bs-toggle="slide" href="javascript:void(0)">
                         <i class="side-menu__icon fe fe-slack"></i>
                         <span class="side-menu__label">Menu Master</span>
                         <i class="angle fe fe-chevron-right"></i>
@@ -77,7 +77,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="slide">
+                <li class="slide" hidden>
                     <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)">
                         <i class="side-menu__icon fe fe-package"></i>
                         <span class="side-menu__label">Bootstrap</span>

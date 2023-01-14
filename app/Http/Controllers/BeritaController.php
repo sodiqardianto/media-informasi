@@ -18,7 +18,8 @@ class BeritaController extends Controller
             ->addColumn('action', function ($berita) {
                 $delete = '<button data-id="' . $berita->id . '" class="btn btn-danger btn-sm delete"><i class="fa fa-trash"></i> Delete</button>';
                 $edit = '<a href="' . route('berita.edit', $berita->id) . '" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i> Ubah</a>';
-                return $edit . ' ' . $delete;
+                $detail = '<a href="' . route('berita.show', $berita->id) . '" class="btn btn-sm btn-info"><i class="fa fa-info"></i> Detail</a>';
+                return $detail . ' ' . $edit . ' ' . $delete;
             })
             ->make(true);
     }
@@ -95,7 +96,8 @@ class BeritaController extends Controller
      */
     public function show($id)
     {
-        //
+        $berita = Berita::with('kategori', 'user')->find($id);
+        return view('berita.show', compact('berita'));
     }
 
     /**

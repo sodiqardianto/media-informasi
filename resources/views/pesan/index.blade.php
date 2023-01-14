@@ -53,8 +53,42 @@
     </div>
 </div>
 <!--app-content closed-->
+
+    <!-- Inout modal -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modal-content-demo">
+                <div class="modal-header">
+                    <h6 class="modal-title">Pesan</h6>
+                    <button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @csrf
+                    <div class="mb-3">
+                        <input type="hidden" name="id" id="id">
+                        <p id="pesan"></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn ripple btn-danger" data-bs-dismiss="modal" type="button">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @push('after-script')
+<script>
+    $(document).on('click', '.show-modal', function () {
+        var id = $(this).attr('data-id');
+        var pesan = $(this).attr('data-pesan');
+        $("#id").val(id);
+        $("#pesan").text(pesan);
+        $('#myModal').modal('show');
+    });
+</script>
+
 <script>
     $('#example2').DataTable({
         responsive: true,
@@ -88,7 +122,16 @@
             },
             {
                 data: 'created_at',
-                name: 'created_at'
+                name: 'created_at',
+                render: function(data) {
+                    return new Intl.DateTimeFormat('id-ID', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: '2-digit',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                    }).format(new Date(data));
+                }
             },
             {
                 data: 'action',

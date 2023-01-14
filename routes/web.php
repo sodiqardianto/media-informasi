@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Spatie\Permission\Models\Permission;
 
@@ -14,12 +15,13 @@ use Spatie\Permission\Models\Permission;
 |
 */
 
-Route::group(['middleware' => ['auth']], function () {
-    Route::get('/', function () {
-        return view('dashboard');
-    })->name('dashboard');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-    Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashborad');
+Route::group(['middleware' => ['auth']], function () {
+    Route::post('logout', [UserController::class, 'logout'])->name('logout');
+
+    Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
     Route::resource('users', App\Http\Controllers\UserController::class);
     Route::get('dataUser', [App\Http\Controllers\UserController::class, 'data'])->name('users.data');
 
@@ -52,8 +54,8 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 // Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('our-teacher', [App\Http\Controllers\HomeController::class, 'show'])->name('our-teacher');
 Route::get('our-post', [App\Http\Controllers\HomeController::class, 'showBerita'])->name('our-post');
 Route::get('detail-post/{id}', [App\Http\Controllers\HomeController::class, 'detailBerita'])->name('detail-post');
 Route::post('pesan', [App\Http\Controllers\PesanController::class, 'store'])->name('pesan.store');
+Route::get('visi-misi', [App\Http\Controllers\HomeController::class, 'visiMisi'])->name('visi-misi');

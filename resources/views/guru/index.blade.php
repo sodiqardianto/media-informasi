@@ -54,8 +54,36 @@
     </div>
 </div>
 <!--app-content closed-->
+
+    <!-- Inout modal -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modal-content-demo">
+                <div class="modal-header">
+                    <h6 class="modal-title">Foto</h6>
+                    <button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img id="gambar" src="" width="100%" height="100%">
+                </div>
+                <div class="modal-footer">
+                    <button class="btn ripple btn-danger" data-bs-dismiss="modal" type="button">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @push('after-script')
+<script>
+    $(document).on('click', '.show-modal', function () {
+        var gambar = $(this).attr('data-gambar');
+        $('#gambar').attr('src', '/assets/images/guru/' + gambar);
+        $('#myModal').modal('show');
+    });
+</script>
+
 <script>
     $('#example2').DataTable({
         responsive: true,
@@ -95,8 +123,11 @@
                 data: 'picture',
                 name: 'picture',
                 "render": function (data, type, full, meta) {
-        return "<img src=\"/images/guru/" + data + "\" height=\"50\"/>";
-    },
+                    return `
+                    <a type="button" data-gambar="${data}" class="show-modal">
+                        <img src="/assets/images/guru/${data}" height=\"50\"/>
+                    </a>`;
+                },
             },
             {
                 data: 'action',

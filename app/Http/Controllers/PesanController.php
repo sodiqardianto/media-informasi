@@ -19,18 +19,18 @@ class PesanController extends Controller
         return DataTables::of($pesan)
             ->addIndexColumn()
             ->addColumn('action', function ($pesan) {
-                if ($pesan->id == 1) {
-                    $delete = '<button data-id="' . $pesan->id . '" class="btn btn-danger btn-sm delete"><i class="fa fa-trash"></i> Delete</button>';
-                } else {
-                    $delete = '<button data-id="' . $pesan->id . '" class="btn btn-danger btn-sm delete"><i class="fa fa-trash"></i> Delete</button>';
-                }
+                $delete = '<button data-id="' . $pesan->id . '" class="btn btn-danger btn-sm delete"><i class="fa fa-trash"></i> Delete</button>';
+                $lihat_pesan = '<button data-id="' . $pesan->id . '" data-pesan="' . $pesan->isipesan . '" class="btn btn-info btn-sm show-modal"><i class="fa fa-eye"></i> Lihat Pesan</button>';
                 $edit = '<a href="' . route('pesan.edit', $pesan->id) . '" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i> Ubah</a>';
-                return $edit . ' ' . $delete;
+                return $lihat_pesan . ' ' . $delete;
             })
             ->make(true);
     }
     public function index()
     {
+        if (Pesan::where('status', 0)->count() > 0) {
+            Pesan::where('status', 0)->update(['status' => 1]);
+        }
         return view('pesan.index');
     }
 

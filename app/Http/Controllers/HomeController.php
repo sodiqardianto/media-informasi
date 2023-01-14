@@ -50,4 +50,9 @@ class HomeController extends Controller
         $recentPosts = Berita::with('kategori')->orderBy('created_at', 'DESC')->limit(4)->get();
         return view('front_office.detail-post', compact('berita', 'kategori', 'recentPosts'));
     }
+
+    public function visiMisi()
+    {
+        return view('front_office.visi-misi');
+    }
 }

@@ -19,6 +19,7 @@ class CreatePesanTable extends Migration
             $table->text('isipesan');
             $table->string('email',50);
             $table->string('notelp',13);
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }
