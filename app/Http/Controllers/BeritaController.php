@@ -55,12 +55,12 @@ class BeritaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'judul_berita' => 'required',
+            'judul' => 'required',
             'kategori' => 'required',
             'berita' => 'required',
             'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ], [
-            'judul_berita.required' => 'Judul Berita Wajib Diisi',
+            'judul.required' => 'Judul Berita Wajib Diisi',
             'kategori.required' => 'Kategori Wajib Dipilih',
             'berita.required' => 'Berita Wajib Diisi',
             'gambar.required' => 'Gambar Wajib Diisi',
@@ -71,13 +71,13 @@ class BeritaController extends Controller
         $data = Berita::create([
             'idkategori' => $request->kategori,
             'iduser' => Auth::user()->id,
-            'judul_berita' => $request->judul_berita,
+            'judul' => $request->judul,
             'berita' => $request->berita,
         ]);
 
         $file = $request->file('gambar');
         $nama_file = time() . "." . $file->getClientOriginalExtension();
-        $file->move(public_path('images/berita'), $nama_file);
+        $file->move(public_path('assets/images/berita'), $nama_file);
         $data->gambar = $nama_file;
         $data->save();
 
@@ -166,5 +166,20 @@ class BeritaController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function updateCarousel(Request $request, $id)
+    {
+        $carousel = $request->carousel;
+
+        $data = Berita::find($id);
+        $data->carousel = $carousel;
+        $data->save();
+
+        // return to ajax
+        return response()->json([
+            'success' => true,
+            'message' => 'Berita Berhasil Ditampilkan Di Carousel',
+        ]);
     }
 }

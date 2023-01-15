@@ -33,8 +33,8 @@
                                 <div class="row mb-4">
                                     <label class="col-md-3 form-label">Judul Berita:</label>
                                     <div class="">
-                                        <input type="text" name="judul_berita" class="form-control @error('judul_berita') is-invalid state-invalid @enderror" placeholder="Judul Berita ...">
-                                        @error('judul_berita')
+                                        <input type="text" name="judul" class="form-control @error('judul') is-invalid state-invalid @enderror" placeholder="Judul Berita ...">
+                                        @error('judul')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>

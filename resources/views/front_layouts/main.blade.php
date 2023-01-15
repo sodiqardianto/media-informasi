@@ -105,12 +105,17 @@
                                         </li>
                                         <li class="slide">
                                             <a class="side-menu__item" data-bs-toggle="slide" href="#Blog">
-                                                <span class="side-menu__label">Blog</span>
+                                                <span class="side-menu__label">Berita</span>
                                             </a>
                                         </li>
                                         <li class="slide">
                                             <a class="side-menu__item" data-bs-toggle="slide" href="#About">
-                                                <span class="side-menu__label">Teacher</span>
+                                                <span class="side-menu__label">Guru</span>
+                                            </a>
+                                        </li>
+                                        <li class="slide">
+                                            <a class="side-menu__item" data-bs-toggle="slide" href="#Contact">
+                                                <span class="side-menu__label">Kontak</span>
                                             </a>
                                         </li>
                                         <li class="slide">
@@ -127,10 +132,10 @@
                                             <ul class="slide-menu">
                                                 <li class="side-menu-label1"><a href="javascript:void(0)">Kategori</a></li>
                                                 <li>
-                                                    <?php $kategori = App\Models\Kategori::all() ?>
+                                                    <?php $kategori = App\Models\Kategori::whereNotIn('id', [1])->get(); ?>
                                                     @foreach ($kategori as $item)
                                                         <li>
-                                                            <a href="{{ route('our-post') }}" class="slide-item">{{ $item->namakategori }}</a>
+                                                            <a href="{{ route('detail.showPage', $item->id) }}" class="slide-item">{{ $item->namakategori }}</a>
                                                         </li>
                                                     @endforeach
                                                 </li>
@@ -147,30 +152,17 @@
                         <div class="row">
                             <div id="carousel-captions" class="carousel slide" data-bs-ride="carousel">
                                 <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img class="d-block w-100 br-5" alt="" src="../assets/images/profile/ku1.jpg" data-bs-holder-rendered="true">
+                                    <?php $berita = App\Models\Berita::where('carousel', 1)->get(); ?>
+                                    @foreach ($berita as $item)
+                                    <div class="carousel-item {{ $item->id == 1 ? 'active' : ''}}">
+                                        <img class="d-block w-100 h-100 br-5" alt="" src="{{ asset('assets/images/berita/' . $item->gambar) }}" data-bs-holder-rendered="true">
                                         <div class="carousel-item-background d-none d-md-block"></div>
                                         <div class="carousel-caption d-none d-md-block">
-                                            <h3>Kumnamu School</h3>
+                                            <h3>{{ $item->judul }}</h3>
                                             <p>Pelaksanaan Saat Ujian Sekolah Kelas VI SD Kumnamu.</p>
                                         </div>
                                     </div>
-                                    <div class="carousel-item">
-                                        <img class="d-block w-100 br-5" alt="" src="../assets/images/profile/ku2.jpg" data-bs-holder-rendered="true">
-                                        <div class="carousel-item-background d-none d-md-block"></div>
-                                        <div class="carousel-caption d-none d-md-block">
-                                            <h3>Kumnamu School</h3>
-                                            <p>Pendaftaraan Peserta Didik Baru Telah Dibuka.</p>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img class="d-block w-100 br-5" alt="" src="../assets/images/profile/ku3.jpg" data-bs-holder-rendered="true">
-                                        <div class="carousel-item-background d-none d-md-block"></div>
-                                        <div class="carousel-caption d-none d-md-block">
-                                            <h3>Kumnamu School</h3>
-                                            <p>Pendaftaraan Peserta Didik Baru Telah Dibuka.</p>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                                 <a class="carousel-control-prev" href="#carousel-captions" role="button" data-bs-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

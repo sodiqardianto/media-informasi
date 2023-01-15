@@ -51,6 +51,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('berita', App\Http\Controllers\BeritaController::class);
     Route::get('databerita', [App\Http\Controllers\BeritaController::class, 'data'])->name('berita.data');
+    // route update caraousel
+    Route::put('berita/{id}/updateCarousel', [App\Http\Controllers\BeritaController::class, 'updateCarousel'])->name('berita.updateCarousel');
 });
 
 // Auth::routes();
@@ -59,3 +61,4 @@ Route::get('our-post', [App\Http\Controllers\HomeController::class, 'showBerita'
 Route::get('detail-post/{id}', [App\Http\Controllers\HomeController::class, 'detailBerita'])->name('detail-post');
 Route::post('pesan', [App\Http\Controllers\PesanController::class, 'store'])->name('pesan.store');
 Route::get('visi-misi', [App\Http\Controllers\HomeController::class, 'visiMisi'])->name('visi-misi');
+Route::get('showPage/{id}', [App\Http\Controllers\HomeController::class, 'showPage'])->name('detail.showPage');

@@ -55,4 +55,11 @@ class HomeController extends Controller
     {
         return view('front_office.visi-misi');
     }
+
+    public function showPage($id)
+    {
+        $berita = Berita::where('idkategori', $id)->get();
+        $namaKategori = Kategori::find($id);
+        return view('front_office.page', compact('berita', 'namaKategori'));
+    }
 }

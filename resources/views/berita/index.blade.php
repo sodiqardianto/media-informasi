@@ -37,6 +37,7 @@
                                             <th class="border-bottom-0">Kategori</th>
                                             <th class="border-bottom-0">Pembuat</th>
                                             <th class="border-bottom-0">Judul Berita</th>
+                                            <th class="border-bottom-0">Carousel</th>
                                             <th class="border-bottom-0">Aksi</th>
                                         </tr>
                                     </thead>
@@ -51,9 +52,39 @@
         </div>
     </div>
 </div>
+
 <!--app-content closed-->
 @endsection
 @push('after-script')
+{{-- onchange input checkbox --}}
+<script>
+    $(document).on("change", "#carousel", function(e) {
+        var id = $(this).data('id');
+        var carousel = $(this).prop('checked') == true ? 1 : 0;
+
+        $.ajax({
+            url: "{{url('berita')}}/" + id + "/updateCarousel",
+            type: 'PUT',
+            data: {
+                _token: "{{ csrf_token() }}",
+                id: id,
+                carousel: carousel
+            },
+            dataType: 'json',
+            success: function (data) {
+                Swal.fire({
+                    title: "Berhasil!",
+                    text: data.message,
+                    icon: "success",
+                    confirmButtonText: "Ok"
+                }).then(function() {
+                    $('#example2').DataTable().ajax.reload();
+                });
+            }
+        });
+    });
+</script>
+
 <script>
     $('#example2').DataTable({
         responsive: true,
@@ -87,6 +118,18 @@
             {
                 data: 'judul',
                 name: 'judul'
+            },
+
+            {
+                data: 'carousel',
+                name: 'carousel',
+                render: function(data, type, row) {
+                    if (data == 1) {
+                        return `<input type="checkbox" value="${data}" data-id="${row.id}" name="carousel" id="carousel" checked>`;
+                    } else {
+                        return `<input type="checkbox" value="${data}" data-id="${row.id}" name="carousel" id="carousel">`;
+                    }
+                }
             },
 
             {

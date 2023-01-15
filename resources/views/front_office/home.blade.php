@@ -71,7 +71,7 @@
                                                                     <div class="card">
                                                                         <div class="product-grid6">
                                                                             <div class="product-image6 p-5">
-                                                                                <img class="img-fluid br-7 w-100" src="{{ asset('images/guru/' . $item->picture) }}" alt="img">
+                                                                                <img class="img-fluid br-7 w-100" src="{{ asset('assets/images/guru/' . $item->picture) }}" alt="img">
                                                                             </div>
                                                                             <div class="card-body pt-0">
                                                                                 <div class="product-content text-center">
@@ -135,6 +135,131 @@
                     </div>
                 </div>
                 <!-- ROW-3 CLOSED -->
+
+                <!-- ROW-10 OPEN -->
+                <div class="bg-image-landing section pb-0" id="Contact">
+                    <div class="container">
+                        <div class="">
+                            <div class="card card-shadow reveal">
+                                <h4 class="text-center fw-semibold mt-7">Kontak</h4>
+                                <span class="landing-title"></span>
+                                <h2 class="text-center fw-semibold mb-0 px-2">Terhubung dengan <span
+                                        class="text-primary">Kita.</span></h2>
+                                <div class="card-body p-5 pb-6 text-dark">
+                                    <div class="statistics-info p-4">
+                                        <div class="row justify-content-center">
+                                            <div class="col-lg-9">
+                                                <div class="mt-3">
+                                                    <div class="text-dark">
+                                                        <div class="services-statistics reveal my-5">
+                                                            <div class="row text-center">
+                                                                <div class="col-xl-3 col-md-6 col-lg-6">
+                                                                    <div class="card">
+                                                                        <div class="card-body p-0">
+                                                                            <div class="counter-status">
+                                                                                <div
+                                                                                    class="counter-icon bg-primary-transparent box-shadow-primary">
+                                                                                    <i
+                                                                                        class="fe fe-map-pin text-primary fs-23"></i>
+                                                                                </div>
+                                                                                <h4 class="mb-2 fw-semibold">Location</h4>
+                                                                                <p>Jalan Palem Raja 3 No 6, Panunggangan Barat, Cibodas, Kota Tangerang, Banten - 15139</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xl-3 col-md-6 col-lg-6">
+                                                                    <div class="card">
+                                                                        <div class="card-body p-0">
+                                                                            <div class="counter-status">
+                                                                                <div
+                                                                                    class="counter-icon bg-secondary-transparent box-shadow-secondary">
+                                                                                    <i
+                                                                                        class="fe fe-headphones text-secondary fs-23"></i>
+                                                                                </div>
+                                                                                <h4 class="mb-2 fw-semibold"> Phone & Email</h4>
+                                                                                <p class="mb-0">021 55767510</p>
+                                                                                <p>info@kumnamu.sch.id</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xl-3 col-md-6 col-lg-6">
+                                                                    <div class="card">
+                                                                        <div class="card-body p-0">
+                                                                            <div class="counter-statuss">
+                                                                                <div
+                                                                                    class="counter-icon bg-success-transparent box-shadow-success">
+                                                                                    <i
+                                                                                        class="fe fe-mail text-success fs-23"></i>
+                                                                                </div>
+                                                                                <h4
+                                                                                    class="mb-2 fw-semibold">
+                                                                                    Contact</h4>
+                                                                                <p class="mb-0">https://kumnamu.sch.id/</p>
+                                                                                <p>info@kumnamu.sch.id</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xl-3 col-md-6 col-lg-6">
+                                                                    <div class="card">
+                                                                        <div class="card-body p-0">
+                                                                            <div class="counter-status">
+                                                                                <div
+                                                                                    class="counter-icon bg-danger-transparent box-shadow-danger">
+                                                                                    <i
+                                                                                        class="fe fe-airplay text-danger fs-23"></i>
+                                                                                </div>
+                                                                                <h4 class="mb-2 fw-semibold">Working Hours</h4>
+                                                                                <p class="mb-0">Senin - Jumat: 07:00 - 14:00</p>
+                                                                                <p>Sabtu - Minggu: Libur</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{-- <div class="col-xl-9">
+                                                <div class="">
+                                                    <form class="form-horizontal reveal revealrotate m-t-20"
+                                                        action="index.html">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12">
+                                                                <input class="form-control" type="text"
+                                                                    required="" placeholder="Username*">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12">
+                                                                <input class="form-control" type="email"
+                                                                    required="" placeholder="Email*">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12">
+                                                                <textarea class="form-control"
+                                                                    rows="5">Your Comment*</textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="">
+                                                            <a href="javascript:void(0)"
+                                                                class="btn btn-primary btn-rounded  waves-effect waves-light">Submit</a>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div> --}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ROW-10 CLOSED -->
 
             </div>
         </div>

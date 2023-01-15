@@ -13,9 +13,10 @@ class Berita extends Model
     protected $fillable = [
         'idkategori',
         'iduser',
-        'judul_berita',
+        'judul',
         'berita',
-        'gambar'
+        'gambar',
+        'carousel'
     ];
 
     public function kategori()

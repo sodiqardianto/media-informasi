@@ -16,7 +16,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets_front/images/brand/favicon.ico') }}">
 
     <!-- TITLE -->
-    <title>@yield('title') – Bootstrap 5 Admin & Dashboard Template</title>
+    <title>Berita – Bootstrap 5 Admin & Dashboard Template</title>
 
     <!-- BOOTSTRAP CSS -->
     <link id="style" href="{{ asset('assets_front/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -78,7 +78,9 @@
             <div class="section bg-landing pb-0 bg-image-style" id="About">
                 <div class="container">
                     <div class="row">
-                        <h4 class="text-center fw-semibold">Our Teacher</h4>
+                        <h4 class="text-center fw-semibold">
+                            Kategori {{ $namaKategori->namakategori }}
+                        </h4>
                         <span class="landing-title"></span>
                         <div class="col-lg-12">
                             <div class="card bg-transparent">
@@ -88,48 +90,20 @@
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="tab-11" role="tabpanel">
                                                     <div class="row">
-                                                        @if ($guru->isNotEmpty())
-                                                            @foreach ($guru as $item)
+                                                        @if ($berita->isNotEmpty())
+                                                            @foreach ($berita as $item)
                                                             <div class="col-md-6 col-xl-4 col-sm-6">
                                                                 <div class="card">
                                                                     <div class="product-grid6">
                                                                         <div class="product-image6 p-5">
-                                                                            <img class="img-fluid br-7 w-100" src="{{ asset('assets/images/guru/' . $item->picture) }}" alt="img">
+                                                                            <img class="img-fluid br-7 w-100" src="{{ asset('assets/images/berita/' . $item->gambar) }}" alt="{{ $item->gambar }}">
                                                                         </div>
                                                                         <div class="card-body pt-0">
                                                                             <div class="product-content text-center">
-                                                                                <h1 class="title fw-bold fs-20">{{ $item->namaguru }}</h1>
+                                                                                <h1 class="title fw-bold fs-20"><a href="{{ route('detail-post', $item->id) }}">{{ $item->judul}}</a></h1>
                                                                                 <div class="row">
-                                                                                    <div class="col-4">
-                                                                                        <strong>NIPN</strong>
-                                                                                    </div>
-                                                                                    <div class="col-2">
-                                                                                        :
-                                                                                    </div>
-                                                                                    <div class="col-6">
-                                                                                        {{ $item->nipn }}
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="row">
-                                                                                    <div class="col-4">
-                                                                                        <strong>Lulusan</strong>
-                                                                                    </div>
-                                                                                    <div class="col-2">
-                                                                                        :
-                                                                                    </div>
-                                                                                    <div class="col-6">
-                                                                                        {{ $item->pendidikanterakhir }}
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="row">
-                                                                                    <div class="col-4">
-                                                                                        <strong>Keahlian Bahasa</strong>
-                                                                                    </div>
-                                                                                    <div class="col-2">
-                                                                                        :
-                                                                                    </div>
-                                                                                    <div class="col-6">
-                                                                                        {{ $item->keahlianbahasa }}
+                                                                                    <div class="col-12">
+                                                                                        {{ substr(strip_tags($item->berita), 0, 150) }} @if (strlen(strip_tags($item->berita)) > 50) <a href="{{ route('detail-post', $item->id) }}" class="btn btn-default btn-sm">Read More</a> @endif
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -138,6 +112,14 @@
                                                                 </div>
                                                             </div>
                                                             @endforeach
+                                                        @else
+                                                            <div class="col-md-12">
+                                                                <div class="card">
+                                                                    <div class="card-body text-center">
+                                                                        <h1 class="title fw-bold fs-20">Data tidak ditemukan</h1>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         @endif
                                                     </div>
                                                 </div>
