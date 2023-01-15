@@ -159,7 +159,7 @@
                                         <div class="carousel-item-background d-none d-md-block"></div>
                                         <div class="carousel-caption d-none d-md-block">
                                             <h3>{{ $item->judul }}</h3>
-                                            <p>Pelaksanaan Saat Ujian Sekolah Kelas VI SD Kumnamu.</p>
+                                            {{-- <p>Pelaksanaan Saat Ujian Sekolah Kelas VI SD Kumnamu.</p> --}}
                                         </div>
                                     </div>
                                     @endforeach
