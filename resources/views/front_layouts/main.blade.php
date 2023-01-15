@@ -155,7 +155,7 @@
                                     <?php $berita = App\Models\Berita::where('carousel', 1)->get(); ?>
                                     @foreach ($berita as $item)
                                     <div class="carousel-item {{ $item->id == 1 ? 'active' : ''}}">
-                                        <img class="d-block w-100 h-100 br-5" alt="" src="{{ asset('assets/images/berita/' . $item->gambar) }}" data-bs-holder-rendered="true">
+                                        <img class="d-block w-100 br-5" alt="" src="{{ asset('assets/images/berita/' . $item->gambar) }}" style="height: 35vw;" data-bs-holder-rendered="true">
                                         <div class="carousel-item-background d-none d-md-block"></div>
                                         <div class="carousel-caption d-none d-md-block">
                                             <h3>{{ $item->judul }}</h3>

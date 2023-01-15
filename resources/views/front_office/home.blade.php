@@ -137,7 +137,7 @@
                 <!-- ROW-3 CLOSED -->
 
                 <!-- ROW-10 OPEN -->
-                <div class="bg-image-landing section pb-0" id="Contact">
+                <div class="bg-image-landing section pb-0 mb-2" id="Contact">
                     <div class="container">
                         <div class="">
                             <div class="card card-shadow reveal">
