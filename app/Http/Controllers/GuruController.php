@@ -81,7 +81,7 @@ class GuruController extends Controller
         // menyimpan gambar guru
         $picture = $request->file('picture');
         $filename = time() . '.' . $picture->getClientOriginalExtension();
-        $picture->move(public_path('images/guru'), $filename);
+        $picture->move(public_path('assets/images/guru'), $filename);
         $guru->picture = $filename;
         $guru->save();
 
@@ -144,7 +144,7 @@ class GuruController extends Controller
                 'nipn' => 'required',
                 'pendidikanterakhir' => 'required',
                 'keahlianbahasa' => 'required',
-                'picture' => 'required|image|max:2024', // opsional, harus berupa gambar, maksimal 1 MB
+                'picture' => 'required|image|mimes:jpeg,png,jpg|max:2024', // opsional, harus berupa gambar, maksimal 1 MB
             ], [
                 'namaguru.required' => 'Nama Guru Wajib Diisi',
                 'nipn.required' => 'NIPN Wajib Diisi',
@@ -170,7 +170,7 @@ class GuruController extends Controller
             // Simpan foto baru
             $picture = $request->file('picture');
             $filename = time() . '.' . $picture->getClientOriginalExtension();
-            $picture->move(public_path('images/guru'), $filename);
+            $picture->move(public_path('assets/images/guru'), $filename);
             $data->picture = $filename;
         }
 

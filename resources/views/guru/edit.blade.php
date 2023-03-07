@@ -23,7 +23,7 @@
             <!-- Row -->
             <div class="row">
                 <div class="col-lg-8">
-                    <form action="{{ route('guru.update', $guru->id) }}" method="POST">
+                    <form action="{{ route('guru.update', $guru->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="card">
@@ -72,7 +72,16 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <img id="image" src="/images/guru/{{$guru->picture==""?'default.jpg':$guru->picture}}" width="200px" height="200px">
+                                    <?php 
+                                            
+                                        if($guru->picture==""){
+                                            $picture = "default.jpg";
+                                        }else{
+                                            $picture = $guru->picture;
+                                        }
+                                        
+                                        ?>
+                                    <img id="image" src="{{asset("assets/images/guru/".$picture )}}" width="200px" height="200px">
                                 </div>
                             </div>
                             <div class="card-footer text-end">

@@ -23,7 +23,7 @@
             <!-- Row -->
             <div class="row">
                 <div class="col-lg-8">
-                    <form action="{{ route('kategori.update', $user->id) }}" method="POST">
+                    <form action="{{ route('kategori.update', $kategori->id) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="card">
