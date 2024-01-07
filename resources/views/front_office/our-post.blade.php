@@ -24,7 +24,7 @@
     <!-- STYLE CSS -->
     <link href="{{ asset('assets_front/css/style.css') }}" rel="stylesheet">
 
-	<!-- Plugins CSS -->
+    <!-- Plugins CSS -->
     <link href="{{ asset('assets_front/css/plugins.css') }}" rel="stylesheet">
 
     <!--- FONT-ICONS CSS -->
@@ -53,18 +53,24 @@
                     <div class="col-xl-12">
                         <div class="card p-0">
                             <div class="card-body p-4">
-                                <form action="/our-teacher">
+                                <form action="/our-post">
                                     <div class="row">
                                         <div class="col-xl-9 col-lg-12 col-md-12 col-sm-12">
                                             <div class="input-group d-flex w-100 float-start">
-                                                <input type="text" class="form-control border-end-0 my-2" placeholder="Search ..." value="{{ request('search') }}" name="search">
-                                                <button class="btn input-group-text bg-transparent border-start-0 text-muted my-2" type="submit">
+                                                <input type="text" class="form-control border-end-0 my-2"
+                                                    placeholder="Search ..." value="{{ request('search') }}"
+                                                    name="search">
+                                                <button
+                                                    class="btn input-group-text bg-transparent border-start-0 text-muted my-2"
+                                                    type="submit">
                                                     <i class="fe fe-search text-muted" aria-hidden="true"></i>
                                                 </button>
                                             </div>
                                         </div>
                                         <div class="col-xl-3 col-lg-12">
-                                            <a href="{{ route('home') }}" class="btn btn-primary btn-block float-end my-2"><i class="fa fa-arrow-left me-2"></i>Kembali</a>
+                                            <a href="{{ route('home') }}"
+                                                class="btn btn-primary btn-block float-end my-2"><i
+                                                    class="fa fa-arrow-left me-2"></i>Kembali</a>
                                         </div>
                                     </div>
                                 </form>
@@ -90,26 +96,46 @@
                                                     <div class="row">
                                                         @if ($berita->isNotEmpty())
                                                             @foreach ($berita as $item)
-                                                            <div class="col-md-6 col-xl-4 col-sm-6">
-                                                                <div class="card">
-                                                                    <div class="product-grid6">
-                                                                        <div class="product-image6 p-5">
-                                                                            <img class="img-fluid br-7 w-100" src="{{ asset('images/guru/' . $item->gambar) }}" alt="img">
-                                                                        </div>
-                                                                        <div class="card-body pt-0">
-                                                                            <div class="product-content text-center">
-                                                                                <h1 class="title fw-bold fs-20">{{ $item->judul_berita }}</h1>
-                                                                                <div class="row">
-                                                                                    <div class="col-12">
-                                                                                        {!! $item->berita !!}
+                                                                <div class="col-md-6 col-xl-4 col-sm-6">
+                                                                    <div class="card">
+                                                                        <div class="product-grid6">
+                                                                            <div class="product-image6 p-5">
+                                                                                <img class="img-fluid br-7 w-100"
+                                                                                    src="{{ asset('assets/images/berita/' . $item->gambar) }}"
+                                                                                    alt="img">
+                                                                            </div>
+                                                                            <div class="card-body pt-0">
+                                                                                <span
+                                                                                    class="badge bg-primary me-1 mb-1 mt-1">{{ $item->kategori->namakategori }}
+                                                                                </span>
+                                                                                <div
+                                                                                    class="product-content text-center">
+                                                                                    <h1 class="title fw-bold fs-20">
+                                                                                        {{ $item->judul }}
+                                                                                    </h1>
+                                                                                    <div class="row">
+                                                                                        <div class="col-12">
+                                                                                            {{-- {!! $item->berita !!} --}}
+                                                                                            <div class="">
+                                                                                                {{ substr(strip_tags($item->berita), 0, 200) }}
+                                                                                                @if (strlen(strip_tags($item->berita)) > 50)
+                                                                                                    <a href="{{ route('detail-post', $item->id) }}"
+                                                                                                        class="btn btn-default btn-sm">Read
+                                                                                                        More</a>
+                                                                                                @endif
+                                                                                            </div>
+                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
                                                             @endforeach
+                                                        @else
+                                                            <div class="col-12">
+                                                                <h3 class="text-center">Belum ada Berita</h3>
+                                                            </div>
                                                         @endif
                                                     </div>
                                                 </div>
@@ -123,11 +149,11 @@
                 </div>
             </div>
             <!-- ROW-3 CLOSED -->
-            
+
         </div>
 
         @include('front_layouts.footer')
-        
+
     </div>
 
     <!-- BACK-TO-TOP -->

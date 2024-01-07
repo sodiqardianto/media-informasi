@@ -24,7 +24,7 @@
     <!-- STYLE CSS -->
     <link href="{{ asset('assets_front/css/style.css') }}" rel="stylesheet">
 
-	<!-- Plugins CSS -->
+    <!-- Plugins CSS -->
     <link href="{{ asset('assets_front/css/plugins.css') }}" rel="stylesheet">
 
     <!--- FONT-ICONS CSS -->
@@ -64,7 +64,9 @@
                                             </div>
                                         </div>
                                         <div class="col-xl-3 col-lg-12">
-                                            <a href="{{ route('home') }}" class="btn btn-primary btn-block float-end my-2"><i class="fa fa-arrow-left me-2"></i>Kembali</a>
+                                            <a href="{{ route('home') }}"
+                                                class="btn btn-primary btn-block float-end my-2"><i
+                                                    class="fa fa-arrow-left me-2"></i>Kembali</a>
                                         </div>
                                     </div>
                                 </form>
@@ -76,14 +78,19 @@
                 <div class="row">
                     <div class="col-xl-8">
                         <div class="card">
-                            <img class="card-img-top " src="{{ asset('assets/images/berita/' . $berita->gambar .'') }}" alt="{{ $berita->gambar }}">
+                            <img class="card-img-top " src="{{ asset('assets/images/berita/' . $berita->gambar . '') }}"
+                                alt="{{ $berita->gambar }}">
                             <div class="card-body">
                                 <div class="d-md-flex">
-                                    <a class="d-flex me-4 mb-2"><i class="fe fe-calendar fs-16 me-1 p-3 bg-secondary-transparent text-secondary bradius"></i>
-                                        <div class="mt-0 mt-3 ms-1 text-muted font-weight-semibold">{{ date('d F Y', strtotime($berita->created_at)); }}</div>
+                                    <a class="d-flex me-4 mb-2"><i
+                                            class="fe fe-calendar fs-16 me-1 p-3 bg-secondary-transparent text-secondary bradius"></i>
+                                        <div class="mt-0 mt-3 ms-1 text-muted font-weight-semibold">
+                                            {{ date('d F Y', strtotime($berita->created_at)) }}</div>
                                     </a>
-                                    <a class="d-flex mb-2"><i class="fe fe-user fs-16 me-1 p-3 bg-primary-transparent text-primary bradius"></i>
-                                        <div class="mt-0 mt-3 ms-1 text-muted font-weight-semibold">{{ $berita->user->name }}</div>
+                                    <a class="d-flex mb-2"><i
+                                            class="fe fe-user fs-16 me-1 p-3 bg-primary-transparent text-primary bradius"></i>
+                                        <div class="mt-0 mt-3 ms-1 text-muted font-weight-semibold">
+                                            {{ $berita->user->name }}</div>
                                     </a>
                                     {{-- <div class="ms-auto">
                                         <a href="javascript:void(0);" class="d-flex mb-2"><i class="fe fe-message-square fs-16 me-1 p-3 bg-success-transparent text-success bradius"></i>
@@ -102,11 +109,15 @@
                                 <div class="card-title">Kirim Komentar</div>
                             </div>
                             <div class="card-body">
-                                <form class="form-horizontal  m-t-20" action="{{ route('pesan.store') }}" method="POST">
+                                <form class="form-horizontal  m-t-20" action="{{ route('pesan.store') }}"
+                                    method="POST">
                                     @csrf
                                     <div class="form-group">
                                         <div class="col-xs-12">
-                                            <input class="form-control @error('nama_lengkap') is-invalid state-invalid @enderror" required="" type="text" name="nama_lengkap" placeholder="Nama Lengkap*">
+                                            <input
+                                                class="form-control @error('nama_lengkap') is-invalid state-invalid @enderror"
+                                                required="" type="text" name="nama_lengkap"
+                                                placeholder="Nama Lengkap*">
                                             @error('nama_lengkap')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -114,7 +125,10 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="col-xs-12">
-                                            <input class="form-control @error('no_telp') is-invalid state-invalid @enderror" required="" type="number" name="no_telp" placeholder="Nomor Telepon*">
+                                            <input
+                                                class="form-control @error('no_telp') is-invalid state-invalid @enderror"
+                                                required="" type="number" name="no_telp"
+                                                placeholder="Nomor Telepon*">
                                             @error('no_telp')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -122,7 +136,9 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="col-xs-12">
-                                            <input class="form-control @error('email') is-invalid state-invalid @enderror" required="" type="email" name="email" placeholder="Email*">
+                                            <input
+                                                class="form-control @error('email') is-invalid state-invalid @enderror"
+                                                required="" type="email" name="email" placeholder="Email*">
                                             @error('email')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -134,7 +150,8 @@
                                         </div>
                                     </div>
                                     <div class="">
-                                        <button type="submit" class="btn btn-primary btn-rounded  waves-effect waves-light">Submit</button>
+                                        <button type="submit"
+                                            class="btn btn-primary btn-rounded  waves-effect waves-light">Submit</button>
                                     </div>
                                 </form>
                             </div>
@@ -147,14 +164,23 @@
                             </div>
                             <div class="card-body">
                                 <div class="">
-                                    @foreach ($recentPosts as $item)                                        
-                                    <div class="d-flex overflow-visible mt-5">
-                                        <a href="{{ route('detail-post', $item->id) }}" class="card-aside-column br-5 cover-image" data-bs-image-src="{{ asset('assets/images/berita/' . $item->gambar) }}" style="background: url(&quot;{{ asset('assets/images/berita/' . $item->gambar) }}&quot;) center center;"></a>
-                                        <div class="ps-3 flex-column">
-                                            <h4><a href="{{ route('detail-post', $item->id) }}"> {{ $item->judul }} </a></h4>
-                                            <div class="text-muted">{{ substr(strip_tags($item->berita), 0, 50) }} @if (strlen(strip_tags($item->berita)) > 50) <a href="{{ route('detail-post', $item->id) }}" class="btn btn-default btn-sm">Read More</a> @endif</div>
+                                    @foreach ($recentPosts as $item)
+                                        <div class="d-flex overflow-visible mt-5">
+                                            <a href="{{ route('detail-post', $item->id) }}"
+                                                class="card-aside-column br-5 cover-image"
+                                                data-bs-image-src="{{ asset('assets/images/berita/' . $item->gambar) }}"
+                                                style="background: url(&quot;{{ asset('assets/images/berita/' . $item->gambar) }}&quot;) center center;"></a>
+                                            <div class="ps-3 flex-column">
+                                                <h4><a href="{{ route('detail-post', $item->id) }}">
+                                                        {{ $item->judul }} </a></h4>
+                                                <div class="text-muted">{{ substr(strip_tags($item->berita), 0, 50) }}
+                                                    @if (strlen(strip_tags($item->berita)) > 50)
+                                                        <a href="{{ route('detail-post', $item->id) }}"
+                                                            class="btn btn-default btn-sm">Read More</a>
+                                                    @endif
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
                                     @endforeach
                                 </div>
                             </div>
@@ -163,11 +189,11 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
 
         @include('front_layouts.footer')
-        
+
     </div>
 
     <!-- BACK-TO-TOP -->
@@ -210,12 +236,12 @@
     <script src="{{ asset('assets/plugins/notify/js/notifIt.js') }}"></script>
 
     <script>
-        @if(session()->has('success'))
+        @if (session()->has('success'))
             notif({
                 msg: "{{ session('success') }}",
                 type: "success",
             })
-        @elseif(session()->has('error'))
+        @elseif (session()->has('error'))
             notif({
                 msg: "{{ session('error') }}",
                 type: "error",

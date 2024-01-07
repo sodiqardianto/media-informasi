@@ -34,7 +34,7 @@ class Berita extends Model
         return $query->when(
             $filters['search'] ?? false,
             fn ($query, $search)
-            => $query->where('judul_berita', 'like', '%' . $search . '%')
+            => $query->where('judul', 'like', '%' . $search . '%')
         );
     }
 }

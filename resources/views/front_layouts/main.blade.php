@@ -24,7 +24,7 @@
     <!-- STYLE CSS -->
     <link href="{{ asset('assets_front/css/style.css') }}" rel="stylesheet">
 
-	<!-- Plugins CSS -->
+    <!-- Plugins CSS -->
     <link href="{{ asset('assets_front/css/plugins.css') }}" rel="stylesheet">
 
     <!--- FONT-ICONS CSS -->
@@ -35,22 +35,22 @@
     <link href="{{ asset('assets_front/switcher/demo.css') }}" rel="stylesheet">
 
     <style>
-    .float{
-        position:fixed;
-        width:60px;
-        height:60px;
-        bottom:25px;
-        right:1430px;
-        background-color:#0C9;
-        color:#FFF;
-        border-radius:50px;
-        text-align:center;
-        box-shadow: 2px 2px 3px #999;
-    }
+        .float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 25px;
+            right: 1430px;
+            background-color: #0C9;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            box-shadow: 2px 2px 3px #999;
+        }
 
-    .my-float{
-        margin-top:22px;
-    }
+        .my-float {
+            margin-top: 22px;
+        }
     </style>
 
 </head>
@@ -75,9 +75,10 @@
                             href="javascript:void(0)"></a>
                         <!-- sidebar-toggle-->
                         <a class="logo-horizontal " href="index.html">
-                            <img src="{{ asset('assets_front/images/brand/logo-white.png') }}" class="header-brand-img desktop-logo" alt="logo">
-                            <img src="{{ asset('assets_front/images/brand/logo-kumnamu.png') }}" class="header-brand-img light-logo1"
-                                alt="logo">
+                            <img src="{{ asset('assets_front/images/brand/logo-white.png') }}"
+                                class="header-brand-img desktop-logo" alt="logo">
+                            <img src="{{ asset('assets_front/images/brand/logo-kumnamu.png') }}"
+                                class="header-brand-img light-logo1" alt="logo">
                         </a>
                         <!-- LOGO -->
                     </div>
@@ -94,8 +95,10 @@
                             <div class="row">
                                 <div class="main-sidemenu navbar px-0">
                                     <a class="navbar-brand ps-0 d-none d-lg-block" href="">
-                                        <img alt="" class="logo-2" src="{{ asset('assets_front/images/brand/logo-kumnamu.png') }}">
-                                        <img src="{{ asset('assets_front/images/brand/logo-white.png') }}" class="logo-3" alt="logo">
+                                        <img alt="" class="logo-2"
+                                            src="{{ asset('assets_front/images/brand/logo-kumnamu.png') }}">
+                                        <img src="{{ asset('assets_front/images/brand/logo-white.png') }}"
+                                            class="logo-3" alt="logo">
                                     </a>
                                     <ul class="side-menu">
                                         <li class="slide">
@@ -120,30 +123,39 @@
                                         </li>
                                         <li class="slide">
                                             <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)">
-                                                <span class="side-menu__label">Tentang</span><i class="angle fe fe-chevron-right"></i></a>
+                                                <span class="side-menu__label">Tentang</span><i
+                                                    class="angle fe fe-chevron-right"></i></a>
                                             <ul class="slide-menu">
-                                                <li class="side-menu-label1"><a href="javascript:void(0)">Tentang</a></li>
-                                                <li><a href="{{ route('visi-misi') }}" class="slide-item">Visi Misi</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="slide">
-                                            <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)">
-                                                <span class="side-menu__label">Kategori</span><i class="angle fe fe-chevron-right"></i></a>
-                                            <ul class="slide-menu">
-                                                <li class="side-menu-label1"><a href="javascript:void(0)">Kategori</a></li>
-                                                <li>
-                                                    <?php $kategori = App\Models\Kategori::whereNotIn('id', [1])->get(); ?>
-                                                    @foreach ($kategori as $item)
-                                                        <li>
-                                                            <a href="{{ route('detail.showPage', $item->id) }}" class="slide-item">{{ $item->namakategori }}</a>
-                                                        </li>
-                                                    @endforeach
+                                                <li class="side-menu-label1"><a href="javascript:void(0)">Tentang</a>
+                                                </li>
+                                                <li><a href="{{ route('visi-misi') }}" class="slide-item">Visi Misi</a>
                                                 </li>
                                             </ul>
                                         </li>
+                                        <li class="slide">
+                                            <a class="side-menu__item" data-bs-toggle="slide"
+                                                href="javascript:void(0)">
+                                                <span class="side-menu__label">Kategori</span><i
+                                                    class="angle fe fe-chevron-right"></i></a>
+                                            <ul class="slide-menu">
+                                                <li class="side-menu-label1"><a href="javascript:void(0)">Kategori</a>
+                                                </li>
+                                                <li>
+                                                    <?php $kategori = App\Models\Kategori::whereNotIn('id', [1])->get(); ?>
+                                                    @foreach ($kategori as $item)
+                                                <li>
+                                                    <a href="{{ route('detail.showPage', $item->id) }}"
+                                                        class="slide-item">{{ $item->namakategori }}</a>
+                                                </li>
+                                                @endforeach
+                                        </li>
+                                    </ul>
+                                    </li>
                                     </ul>
                                     <div class="header-nav-right d-none d-lg-flex">
-                                        <a href="{{ route('login') }}" class="btn ripple btn-min w-sm btn-primary me-2 my-auto d-lg-none d-xl-block d-block" target="_blank">Login</a>
+                                        <a href="{{ route('login') }}"
+                                            class="btn ripple btn-min w-sm btn-primary me-2 my-auto d-lg-none d-xl-block d-block"
+                                            target="_blank">Login</a>
                                     </div>
                                 </div>
                             </div>
@@ -152,40 +164,43 @@
                     <!--/APP-SIDEBAR-->
                 </div>
                 <div id="home">
-                        <div class="row">
-                            <div id="carousel-captions" class="carousel slide" data-bs-ride="carousel">
-                                <div class="carousel-inner">
-                                    <?php $berita = App\Models\Berita::where('carousel', 1)->get(); ?>
-                                    @foreach ($berita as $item)
-                                    <div class="carousel-item {{ $item->id == 1 ? 'active' : ''}}">
-                                        <img class="d-block w-100 br-5" alt="" src="{{ asset('assets/images/berita/' . $item->gambar) }}" style="height: 42vw;" data-bs-holder-rendered="true">
+                    <div class="row">
+                        <div id="carousel-captions" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <?php $berita = App\Models\Berita::where('carousel', 1)->get(); ?>
+                                @foreach ($berita as $item)
+                                    <div class="carousel-item {{ $item->id == 1 ? 'active' : '' }}">
+                                        <img class="d-block w-100 br-5" alt=""
+                                            src="{{ asset('assets/images/berita/' . $item->gambar) }}"
+                                            style="height: 42vw;" data-bs-holder-rendered="true">
                                         <div class="carousel-item-background d-none d-md-block"></div>
                                         <div class="carousel-caption d-none d-md-block">
                                             <h3>{{ $item->judul }}</h3>
-                                            {{-- <p>Pelaksanaan Saat Ujian Sekolah Kelas VI SD Kumnamu.</p> --}}
                                         </div>
                                     </div>
-                                    @endforeach
-                                </div>
-                                <a class="carousel-control-prev" href="#carousel-captions" role="button" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                                <a class="carousel-control-next" href="#carousel-captions" role="button" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Next</span>
-                                </a>
+                                @endforeach
                             </div>
+                            <a class="carousel-control-prev" href="#carousel-captions" role="button"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carousel-captions" role="button"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
                         </div>
+                    </div>
                 </div>
             </div>
 
             @yield('content')
-            
+
         </div>
 
         @include('front_layouts.footer')
-        
+
     </div>
     <a type="button" data-bs-toggle="modal" data-bs-target="#input-modal" class="float">
         <i class="fa fa-comments my-float"></i>
@@ -206,15 +221,18 @@
                         @csrf
                         <div class="mb-3">
                             <label for="nama_lengkap" class="col-form-label">Nama Lengkap</label>
-                            <input type="text" class="form-control" name="nama_lengkap" id="nama_lengkap" placeholder="Nama Lengkap" required="">
+                            <input type="text" class="form-control" name="nama_lengkap" id="nama_lengkap"
+                                placeholder="Nama Lengkap" required="">
                         </div>
                         <div class="mb-3">
                             <label for="no_telp" class="col-form-label">No. Telepon</label>
-                            <input type="number" class="form-control" name="no_telp" id="no_telp" placeholder="No. Telepon" required="">
+                            <input type="number" class="form-control" name="no_telp" id="no_telp"
+                                placeholder="No. Telepon" required="">
                         </div>
                         <div class="mb-3">
                             <label for="email" class="col-form-label">Email</label>
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Email" required="">
+                            <input type="email" class="form-control" name="email" id="email"
+                                placeholder="Email" required="">
                         </div>
                         <div class="mb-3">
                             <label for="komentar" class="col-form-label">Pesan:</label>
