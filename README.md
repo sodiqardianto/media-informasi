@@ -33,13 +33,3 @@ Web apps ini dibuat untuk kebutuhan tugas akhir/skripsi. Dibuat dengan Laravel 8
 ![App Screenshot](https://raw.githubusercontent.com/sodiqardianto/media-informasi/main/screenshots/img-6.jpeg)
 
 ![App Screenshot](https://raw.githubusercontent.com/sodiqardianto/media-informasi/main/screenshots/img-7.jpeg)
-
-
-
-
-## Related
-
-Here are some related projects
-
-Template Admin by [Stisla](https://github.com/stisla/stisla)
-
